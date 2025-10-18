@@ -3,15 +3,7 @@ import gradio as gr
 from textblob import TextBlob
 
 def sentiment_analysis(text: str) -> str:
-    """
-    Analyze the sentiment of the given text.
-
-    Args:
-        text (str): The text to analyze
-
-    Returns:
-        str: A JSON string containing polarity, subjectivity, and assessment
-    """
+  
     blob = TextBlob(text)
     sentiment = blob.sentiment
     
@@ -23,15 +15,16 @@ def sentiment_analysis(text: str) -> str:
 
     return json.dumps(result)
 
-# Create the Gradio interface
+#Gradio interface
 demo = gr.Interface(
     fn=sentiment_analysis,
     inputs=gr.Textbox(placeholder="Enter text to analyze..."),
-    outputs=gr.Textbox(),  # Changed from gr.JSON() to gr.Textbox()
+    outputs=gr.Textbox(),
     title="Text Sentiment Analysis",
     description="Analyze the sentiment of text using TextBlob"
 )
 
 # Launch the interface and MCP server
 if __name__ == "__main__":
+
     demo.launch(mcp_server=True)
