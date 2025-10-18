@@ -1,1 +1,2 @@
-"gradio[mcp]" textblob
+gradio[mcp]
+textblob
